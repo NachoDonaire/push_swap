@@ -1,152 +1,134 @@
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "pushswaplib.h"
-void	reverse_rotate(int arg, int a[])
+
+
+void	push(int *a, int *b)
 {
-	int	i;
-	int	u;
-	int	sol[arg];
+	int i;
+	int y;
 
 	i = 0;
-	i = 0;
-	u = 1;
-	while (i < arg)
+	y = 0;
+	while (b[i] != -1)
 	{
-		sol[u++] = a[i++];
+		b[i + 1] = b[i];
+		i++;
 	}
-	sol[0] = a[i - 1];
-	sol[u - 1] = '\0';
+	b[0] = a[0];
 	i = 0;
-	while (i < arg)
+	while (a[i] != -1)
 	{
-		a[i] = sol[i];
+		a[i] = a[i + 1];
 		i++;
 	}
 }
 
-void	reverse_rotate_both(int arg, int a[], int b[])
+void	rotate(int *a)
 {
-	reverse_rotate(arg, a);
-	reverse_rotate(arg, b);
-}
-
-void	rotate(int arg, int a[])
-{
-	int	y;
-	int	sol[arg];
+	int	i;
 	int	aux;
-	int	pos;
 
+	i = 0;
 	aux = a[0];
-	pos = 1;
-	y = 0;
-	while (pos < arg)
+	while (a[i] != -1)
 	{
-		sol[y++] = a[pos++];
+		a[i] = a[i + 1];
+		i++;
 	}
-	sol[y] = aux;
-	y = 0;
-	while (y < arg)
-	{
-		a[y] = sol[y];
-		y++;
-	}
+	a[i - 1] = aux;
+	a[i] = -1;
 }
-/*
-void	rotate_both(int a[], int b[])
+
+void	reverse_rotate(int *a, int arg)
+{
+	int	i;
+	int *aux;
+
+	aux = malloc(sizeof(int) * arg);
+	i = 0;
+	while (a[i] != -1)
+	{
+		aux[i] = a[i];
+		i++;
+	}
+	i = 1;
+	while (a[i] != -1)
+	{
+		a[i] = aux[i - 1];
+	   i++;
+	}
+	a[0] = aux[i - 1];
+	a[i] = -1;
+}
+
+void	rotate_both(int *a, int *b)
 {
 	rotate(a);
 	rotate(b);
 }
-*/
-void    swap(int a[FOPEN_MAX])
-{
-        int i;
 
-        i = a[0];
-        a[0] = a[1];
-        a[1] = i;
+void	menos_fill(int arg, int *b)
+{
+	int i;
+
+	i = 0;
+	while (i < arg)
+		b[i++] = -1;
 }
 
-void	swap_both(int a[], int b[])
+int		*map(int	*a, int arg)
 {
-	swap(a);
-	swap(b);
+	int i;
+	int y;
+	int	pos;
+	int	*sol;
+
+	i = 0;
+	y = 0;
+	pos = 0;
+	sol = malloc(sizeof(int) * (arg + 1));
+	while (y < arg && i < arg)
+	{
+		if (a[i] > a[y])
+			pos++;
+		y++;
+		if (y == arg)
+		{
+			sol[i] = pos;
+			y = 0;
+			i++;
+			pos = 0;
+		}
+	}
+	sol[i] = -1; 
+	return (sol);
 }
 
-void    push(int a[FOPEN_MAX], int b[FOPEN_MAX])
-{
-        int i;
-        int aux[FOPEN_MAX];
-        int aux_off;
-
-        aux[0] = a[0];
-        i = 1;
-        while ((char)(b[i]) != '\0')
-        {
-                aux[i++] = b[aux_off++];
-        }
-        i = 0;
-        while ((char)(aux[i]))
-        {
-                b[i] = aux[i];
-                i++;
-        }
-}
 
 int main(int arg, char **args)
 {
-	int a[arg - 1];
-	//int b[FOPEN_MAX];
+	int *a;
+	int	*b;
 	int i;
 	int y;
-	
-	i = 0;
-	y = 1;
-	while (i < arg - 1)
+
+	a = malloc(sizeof(int) * arg);
+	b = malloc(sizeof(int) * arg - 1);
+	i = 1;
+	y = 0;
+	while (args[i])
 	{
-		a[i] = ft_atoi(args[y]);
+		a[y++] = ft_atoi(args[i]);
 		i++;
-		y++;
 	}
-	//int b[5] = {3, 1, 4, 5, 6};
+	a = map(a, arg - 1);
+	menos_fill(arg - 1, b);
+	reverse_rotate(a, arg - 1);
 	i = 0;
-	y = 1;
-	//reverse_rotate(arg - 1, a);
-	//rotate(a);
-	//rotate(a);
-	while (y < arg - 1)
-	{
-		if (a[y] < a[i])
-			i = y;
-		y++;
-	}
-	if (i <= ((arg - 1) / 2))
-	{
-		while (i > 0)
-		{
-			write(1, "r\n", 2);
-			rotate(arg - 1, a);
-			i--;
-		}
-	}
-	else if (i > ((arg - 1) / 2))
-	{
-		while (i < arg - 1)
-		{
-			write(1, "rr\n", 3);
-			reverse_rotate(arg - 1, a);
-			i++;
-		}
-	}
-	i = 0;
-	while (i < arg - 1)
-	{
-		printf("%d\n", a[i++]);
-	}	
+	while (a[i] != -1)
+		printf("%d", a[i++]);
 	return (0);
 }
 
 
 	
+
