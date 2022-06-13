@@ -1,4 +1,4 @@
-SRCS	=	functions.c
+SRCS	=	functions.c functions_utils.c
 OBJS	=	${SRCS:.c=.c}
 NAME	=	push_swap ft_atoi.c
 CC		=	gcc

@@ -1,19 +1,47 @@
 #include "pushswaplib.h"
 
-
-void	push(int *a, int *b)
+int	lens(int *a)
 {
-	int i;
-	int y;
+	int	i;
 
 	i = 0;
-	y = 0;
+	while (a[i] != -1)
+		i++;
+	return (i);
+}
+
+void	swap(int *a)
+{
+	int	aux;
+	aux = a[0];
+	a[0] = a[1];
+	a[1] = aux;
+}
+
+void	push(int *a, int *b, int arg)
+{
+	int i;
+	int *aux;
+
+	//write(1, "--db--", 6);
+	//write(2, &i, 1);
+	aux = malloc(sizeof(int) * arg);
+	i = 0;
+	aux[0] = a[0];
 	while (b[i] != -1)
 	{
-		b[i + 1] = b[i];
+		aux[i + 1] = b[i];
 		i++;
 	}
-	b[0] = a[0];
+	aux[i + 1] = -1;
+	i = 0;
+	while (aux[i] != -1)
+	{
+		b[i] = aux[i];
+		i++;
+	}
+	b[i] = -1;
+	free(aux);
 	i = 0;
 	while (a[i] != -1)
 	{
@@ -104,15 +132,107 @@ int		*map(int	*a, int arg)
 }
 
 
+int	find_mid_value(int *a)
+{
+	int	i;
+	int	y;
+	int	min;
+	int	max;
+
+	i = 0;
+	y = 0;
+	while (a[i] != -1)
+	{
+		if (a[i] < a[y])
+			y = i;
+		i++;
+	}
+	min = a[y];
+	i = 0;
+	y = 0;
+	while (a[i] != -1)
+	{
+		if (a[i] > a[y])
+			y = i;
+		i++;
+	}
+	max = (min + a[y]) / 2;
+	return (max);
+}
+
+int	first_push(int arg, int *a, int *b)
+{
+        int     i;
+        int     mid;
+        int     count;
+	int	chunk;
+
+        i = 0;
+        count = 0;
+	chunk = 0;
+        mid = find_mid_value(a);
+        while (a[i] != -1)
+        {
+                if (a[i] < mid)
+                {
+                        while (count < i)
+                        {
+                                write(1, "ra\n", 3);
+                                rotate(a);
+                                count++;
+                        }
+                        i = 0;
+			count++;
+                        write(1, "pa\n", 3);
+                        push(a, b, arg);
+			chunk++;
+                }
+		i++;
+		if (count != 0)
+			i = 0;
+		count = 0;
+	}
+	return (chunk);
+}
+
+int	find_chunk_mid(int *chunk, int *b, int arg)
+{
+	int	i;
+	int	y;
+	int	*aux;
+	int	mid;
+	int	re_chunk;
+
+	i = 0;
+	y = 0;
+	aux = malloc(sizeof(int) * (arg));
+	while (chunk[i] != -1)
+		i++;
+	i--;
+	re_chunk = chunk[i];
+	while (re_chunk >= 0)
+	{
+		aux[y] = b[y];
+		y++;
+		re_chunk--;
+	}
+	mid = find_mid_value(aux);
+	free(aux);
+	return (mid);
+}
+
+
 int main(int arg, char **args)
 {
 	int *a;
 	int	*b;
 	int i;
 	int y;
+	int	*chunk;
 
 	a = malloc(sizeof(int) * arg);
-	b = malloc(sizeof(int) * arg - 1);
+	b = malloc(sizeof(int) * arg);
+	chunk = malloc(sizeof(int) * arg);
 	i = 1;
 	y = 0;
 	while (args[i])
@@ -121,8 +241,30 @@ int main(int arg, char **args)
 		i++;
 	}
 	a = map(a, arg - 1);
+	i = 0;
+	while (a[i] != -1)
+		printf("%d", a[i++]);
 	menos_fill(arg - 1, b);
-	reverse_rotate(a, arg - 1);
+	menos_fill(arg - 1, chunk);
+	i = 0;
+	y = 0;
+	printf("--%d--", find_mid_value(a));
+	while (lens(a) > 2 && (arg - 1) % 2 == 0)
+		chunk[y++] = first_push(arg, a, b);
+	while (lens(a) > 3 && (arg - 1) % 2 == 1)
+		chunk[y++] = first_push(arg, a, b);
+	if ((arg - 1) % 2 == 0)
+	{
+		check_higher(a);
+		general_push(chunk, a, b, arg);
+		last_push(b, a, arg);
+	}
+	else
+	{
+		check_higher_no_pair(a);
+		general_push_no_pair(chunk, a, b, arg);
+		last_push(b, a, arg);
+	}
 	i = 0;
 	while (a[i] != -1)
 		printf("%d", a[i++]);
