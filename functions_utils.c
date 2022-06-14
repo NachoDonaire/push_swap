@@ -40,6 +40,7 @@ void	touch_chunk(int *chunk)
 	int	i;
 
 	i = 0;
+	rotate(chunk);
 	while (chunk[i] != -1)
 		i++;
 	chunk[i - 1] = -1;
@@ -56,10 +57,10 @@ void	general_push(int *chunk, int *a, int *b, int arg)
 	y = 0;
 	count = 0;
 	mid = 0;
-	while (lens(b) > 2)
+	while (chunk[y] != -1)
 	{
 		mid = find_chunk_mid(chunk, b, arg);
-		while (i < chunk[y])
+		while (i < chunk[y] && chunk[y] != -1)
 		{
 			if (b[i] > mid)
 			{
@@ -80,6 +81,7 @@ void	general_push(int *chunk, int *a, int *b, int arg)
 			count = 0;
 		}
 		i = 0;
+		//printf("--%d--", mid);
 		touch_chunk(chunk);
 	}
 }
@@ -142,5 +144,24 @@ void	last_push(int *b, int *a, int arg)
 		push(b, a, arg);
 	}
 }
+/*
+int	checker(int *a)
+{
+	int	i;
+	int	aux;
+	int	y;
 
+	if (lens(a) == 2)
+		return (1);
+	i = 1;
+	aux = 0;
+	y = 0;
+	while (a[i] != -1)
+	{
+		if (a[y] == a[i])
+			count++;
+		i++;
+
+*/
+		
 

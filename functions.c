@@ -242,13 +242,13 @@ int main(int arg, char **args)
 	}
 	a = map(a, arg - 1);
 	i = 0;
-	while (a[i] != -1)
-		printf("%d", a[i++]);
+//	while (a[i] != -1)
+//		printf("%d", a[i++]);
 	menos_fill(arg - 1, b);
 	menos_fill(arg - 1, chunk);
 	i = 0;
 	y = 0;
-	printf("--%d--", find_mid_value(a));
+//	printf("--%d--", find_mid_value(a));
 	while (lens(a) > 2 && (arg - 1) % 2 == 0)
 		chunk[y++] = first_push(arg, a, b);
 	while (lens(a) > 3 && (arg - 1) % 2 == 1)
@@ -266,8 +266,8 @@ int main(int arg, char **args)
 		last_push(b, a, arg);
 	}
 	i = 0;
-	while (a[i] != -1)
-		printf("%d", a[i++]);
+	//while (a[i] != -1)
+	//	printf("%d", a[i++]);
 	return (0);
 }
 

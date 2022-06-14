@@ -1,6 +1,6 @@
-SRCS	=	functions.c functions_utils.c
-OBJS	=	${SRCS:.c=.c}
-NAME	=	push_swap ft_atoi.c
+SRCS	=	functions.c functions_utils.c ft_atoi.c
+OBJS	=	${SRCS:.c=.o}
+NAME	=	push_swap
 CC		=	gcc
 RM		=	rm -f
 CFLAGS	=	-Wall -Wextra -Werror 
@@ -13,7 +13,5 @@ clean:
 	${RM} ${OBJS}
 fclean:
 	${RM} ${NAME}
-re: fclean all
-.PHONY: all clean fclean re
 re: fclean all
 .PHONY: all clean fclean re
