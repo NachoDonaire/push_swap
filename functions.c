@@ -206,9 +206,9 @@ int	find_chunk_mid(int *chunk, int *b, int arg)
 	i = 0;
 	y = 0;
 	aux = malloc(sizeof(int) * (arg));
-	while (chunk[i] != -1)
+	/*while (chunk[i] != -1)
 		i++;
-	i--;
+	i--;*/
 	re_chunk = chunk[i];
 	while (re_chunk >= 0)
 	{
@@ -216,6 +216,7 @@ int	find_chunk_mid(int *chunk, int *b, int arg)
 		y++;
 		re_chunk--;
 	}
+	aux[y] = -1;
 	mid = find_mid_value(aux);
 	free(aux);
 	return (mid);
@@ -253,21 +254,35 @@ int main(int arg, char **args)
 		chunk[y++] = first_push(arg, a, b);
 	while (lens(a) > 3 && (arg - 1) % 2 == 1)
 		chunk[y++] = first_push(arg, a, b);
+		y = 0;
+		printf("//%d//", arg - 1);
+	/*while (chunk[y] != -1)
+		printf("//%d//", chunk[y++]);
+	*//*
+	y--;
+	touch_chunk(chunk);
+	y--;
+	printf("--%d--", chunk[y]);
+	*/
+	
 	if ((arg - 1) % 2 == 0)
 	{
 		check_higher(a);
 		general_push(chunk, a, b, arg);
-		last_push(b, a, arg);
+		last_push_due(b, a, arg);
+		//last_push(b, a, arg);
 	}
 	else
 	{
-		check_higher_no_pair(a);
+		check_higher_no_pair(a, arg);
 		general_push_no_pair(chunk, a, b, arg);
-		last_push(b, a, arg);
+		last_push_due(b, a, arg);
+		//last_push(b, a, arg);
 	}
+	//reverse_rotate(a, arg);
 	i = 0;
-	//while (a[i] != -1)
-	//	printf("%d", a[i++]);
+	while (a[i] != -1)
+		printf("%d\n", a[i++]);
 	return (0);
 }
 

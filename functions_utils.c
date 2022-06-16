@@ -4,12 +4,12 @@ void	check_higher(int *a)
 {
 	if (a[0] > a[1])
 	{
-		write(1, "ra\n", 3);
-		rotate(a);
+		write(1, "sa\n", 3);
+		swap(a);
 	}
 }
 
-void	check_higher_no_pair(int *a)
+void	check_higher_no_pair(int *a, int arg)
 {
 	int	i;
 	int	y;
@@ -18,73 +18,125 @@ void	check_higher_no_pair(int *a)
 	y = 0;
 	while (a[i] != -1)
 	{
-		if (a[i] < a[y])
+		if (a[i] > a[y])
 			y = i;
 		i++;
 	}
 	i = 0;
-	while (i < y)
+	if (y == 0)
 	{
 		write(1, "ra\n", 3);
 		rotate(a);
-		i++;
+		check_higher(a);
 	}
-	if (a[0] > a[1])
+	else if (y == 1)
 	{
-		write(1, "sa\n", 3);	
-		swap(a);
+		write(1, "rra\n", 4);
+		reverse_rotate(a, arg);
+		check_higher(a);
 	}
+	else if (y == 2)
+		check_higher(a);
 }
 void	touch_chunk(int *chunk)
 {
 	int	i;
 
 	i = 0;
-	rotate(chunk);
+	//rotate(chunk);
 	while (chunk[i] != -1)
 		i++;
-	chunk[i - 1] = -1;
+	if (i - 1 >= 0)
+		chunk[i - 1] = -1;
 }
 
 void	general_push(int *chunk, int *a, int *b, int arg)
+{
+	treat_chunk(chunk, a, b, arg);
+}
+
+int	find_highest_chunk(int *chunk, int *b)
+{
+	int	y;
+	int	i;
+	int aux;
+
+	y = 0;
+	i = 0;
+	while (chunk[y] != -1)
+		y++;
+	y--;
+	while (i < chunk[y])
+	{
+		if (b[i] > aux)
+			aux = b[i];
+		i++;
+	}
+	return (aux);
+}
+
+
+
+void	treat_chunk(int *chunk, int *a, int *b, int arg)
 {
 	int	i;
 	int	mid;
 	int	y;
 	int	count;
+	int	aux;
 
 	i = 0;
 	y = 0;
+	aux = 0;
 	count = 0;
-	mid = 0;
-	while (chunk[y] != -1)
+	while (chunk[y] !=  -1)
+		y++;
+	y--;
+	while (chunk[y] >= 0)
 	{
 		mid = find_chunk_mid(chunk, b, arg);
-		while (i < chunk[y] && chunk[y] != -1)
+		while (i < chunk[y])
 		{
-			if (b[i] > mid)
+			printf("//%d//", chunk[y]);
+			if (b[i] == find_highest_chunk(chunk, b))
 			{
+				printf("$%d$", find_highest_chunk(chunk, b));
+				aux++;
 				while (count < i)
 				{
 					write(1, "rb\n", 3);
-					rotate(b);
 					count++;
+					rotate(b);
+					aux++;
 				}
-				i = 0;
-				count++;
 				write(1, "pb\n", 3);
 				push(b, a, arg);
+				chunk[y]--;
+				while (count > 0)
+				{
+					write(1, "rrb\n", 4);
+					reverse_rotate(b, arg);
+					count--;
+				}
 			}
-			i++;
-			if (count != 0)
+			if (aux > 0)
 				i = 0;
-			count = 0;
+			else
+				i++;
+			aux = 0;
+			/*i++;
+			if (aux == 0 && y == 1)
+				i = 0;
+			if (aux == 0 && y == 1)
+				i--;
+			aux = 0;
+			y = 0;*/
 		}
 		i = 0;
-		//printf("--%d--", mid);
 		touch_chunk(chunk);
 	}
 }
+			
 
 void	general_push_no_pair(int *chunk, int *a, int *b, int arg)
 {
@@ -95,34 +147,15 @@ void	general_push_no_pair(int *chunk, int *a, int *b, int arg)
 
 	i = 0;
 	y = 0;
-	count = 0;
+		count = 0;
 	mid = 0;
-	while (lens(b) > 3)
-	{
-		mid = find_chunk_mid(chunk, b, arg);
-		while (i < chunk[y])
-		{
-			if (b[i] > mid)
-			{
-				while (count < i)
-				{
-					write(1, "rb\n", 3);
-					rotate(b);
-					count++;
-				}
-				i = 0;
-				count++;
-				write(1, "pb\n", 3);
-				push(b, a, arg);
-			}
-			i++;
-			if (count != 0)
-				i = 0;
-			count = 0;
-		}
-		i = 0;
-		touch_chunk(chunk);
-	}
+	treat_chunk(chunk, a, b, arg);
+}
+
+void	last_push_due(int *b, int *a, int arg)
+{
+	write(1, "pb\n", 3);
+	push(b, a, arg);
 }
 
 void	last_push(int *b, int *a, int arg)
@@ -144,24 +177,4 @@ void	last_push(int *b, int *a, int arg)
 		push(b, a, arg);
 	}
 }
-/*
-int	checker(int *a)
-{
-	int	i;
-	int	aux;
-	int	y;
-
-	if (lens(a) == 2)
-		return (1);
-	i = 1;
-	aux = 0;
-	y = 0;
-	while (a[i] != -1)
-	{
-		if (a[y] == a[i])
-			count++;
-		i++;
-
-*/
-		
 

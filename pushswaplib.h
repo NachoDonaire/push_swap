@@ -22,8 +22,11 @@ void    push(int *a, int *b, int arg);
 int     find_chunk_mid(int *chunk, int *b, int arg);
 void	last_push(int *b, int *a, int arg);
 void	general_push_no_pair(int *chunk, int *a, int *b, int arg);
-void	check_higher_no_pair(int *a);
+void	check_higher_no_pair(int *a, int arg);
 void	swap(int *a);
+void	reverse_rotate(int *a, int arg);
+void	treat_chunk(int *chunk, int *a, int *b, int arg);
+void	last_push_due(int *b, int *a, int arg);
 
 
 #endif
