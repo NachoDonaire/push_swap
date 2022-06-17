@@ -27,6 +27,14 @@ void	swap(int *a);
 void	reverse_rotate(int *a, int arg);
 void	treat_chunk(int *chunk, int *a, int *b, int arg);
 void	last_push_due(int *b, int *a, int arg);
+int		bin_converter(int a);
+void	first_bit(int *a, int *b, int arg);
+int		amount_digits(int *a);
+int		pot_ten(int base, int exp);
+void	general_bit(int *a, int *b, int arg, int amount);
+int		dec_converter(int a);
+int		digits(int a);
+int		*map(int *a, int arg);
 
 
 #endif
