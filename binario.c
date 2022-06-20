@@ -32,7 +32,7 @@ int main()
 {
 	int k;
 
-	k = 36;
+	k = 2;
 	k = bin_converter(k);
 	printf("%d", k);
 }*/

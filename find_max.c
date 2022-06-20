@@ -4,25 +4,24 @@ int	amount_digits(int *a)
 {
 	int	i;
 	int	y;
-	int	bin;
 
 	i = 0;
 	y = 0;
 	while (a[i] != -1)
 	{
-		if (a[i] > a[y])
+		if (digits(a[i]) > digits(a[y]))
 			y = i;
 		i++;
 	}
 	//bin = bin_converter(a[y]);
-	bin = a[y];
+/*	bin = a[y];
 	i = 0;
 	while (bin / 10 != 0)
 	{
 		i++;
 		bin = bin / 10;
-	}
-	return (i + 1);
+	}*/
+	return (digits(a[y]));
 }
 
 int	pot_ten(int base, int exp)

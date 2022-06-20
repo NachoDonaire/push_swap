@@ -89,6 +89,7 @@ void	treat_chunk(int *chunk, int *a, int *b, int arg)
 	y = 0;
 	aux = 0;
 	count = 0;
+	mid = 0;
 	while (chunk[y] !=  -1)
 		y++;
 	y--;

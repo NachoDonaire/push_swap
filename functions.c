@@ -222,7 +222,7 @@ int	find_chunk_mid(int *chunk, int *b, int arg)
 	return (mid);
 }
 
-/*
+
 int main(int arg, char **args)
 {
 	int *a;
@@ -243,7 +243,6 @@ int main(int arg, char **args)
 		i++;
 	}
 	a = map(a, arg - 1);
-	amount = amount_digits(a);
 	i = 0;
 //	while (a[i] != -1)
 //		printf("%d", a[i++]);
@@ -251,15 +250,19 @@ int main(int arg, char **args)
 	menos_fill(arg - 1, chunk);
 	i = 0;
 	y = 0;
+	//while (a[i] != -1)
+	//	printf("--%d--", a[i++]);
+	i = 0;
 	while (a[i] != -1)
 	{
 		a[i] = bin_converter(a[i]);
 		i++;
 	}
+	amount = amount_digits(a);
 	first_bit(a, b, arg);
 	general_bit(a, b, arg, amount);
 //	printf("--%d--", find_mid_value(a));
-	while (lens(a) > 2 && (arg - 1) % 2 == 0)
+	/*while (lens(a) > 2 && (arg - 1) % 2 == 0)
 		chunk[y++] = first_push(arg, a, b);
 	while (lens(a) > 3 && (arg - 1) % 2 == 1)
 		chunk[y++] = first_push(arg, a, b);
@@ -267,7 +270,7 @@ int main(int arg, char **args)
 		printf("//%d//", arg - 1);
 	while (chunk[y] != -1)
 		printf("//%d//", chunk[y++]);
-	*//*
+	
 	y--;
 	touch_chunk(chunk);
 	y--;
@@ -294,13 +297,19 @@ int main(int arg, char **args)
 	{
 		a[i] = dec_converter(a[i]);
 		i++;
+	}*/
+	i = 0;
+	
+	while (a[i] != -1)
+	{
+		a[i] = dec_converter(a[i]);
+		i++;
 	}
 	i = 0;
 	while (a[i] != -1)
 		printf("%d\n", a[i++]);
-
 	return (0);
-}*/
+}
 
 
 	
