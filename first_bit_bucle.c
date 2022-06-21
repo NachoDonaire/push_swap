@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   binario.c                                          :+:      :+:    :+:   */
+/*   first_bit_bucle.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 11:37:54 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/21 11:38:46 by ndonaire         ###   ########.fr       */
+/*   Created: 2022/06/21 13:08:18 by ndonaire          #+#    #+#             */
+/*   Updated: 2022/06/21 13:08:33 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	bin_converter(int a)
+void	first_bit_bucle(int *a, int *b, int arg)
 {
-	int		ref;
-	int		count;
-	char	*sol;
+	int	i;
+	int	count;
 
 	count = 0;
-	ref = a;
-	while (ref > 0)
+	i = 0;
+	while (a[i] != -1)
 	{
-		ref = ref / 2;
-		count++;
+		if ((a[i] + 1) % 2 != 0)
+		{
+			while (count < i)
+			{
+				write(1, "ra\n", 3);
+				rotate(a);
+				count++;
+			}
+			write(1, "pb\n", 3);
+			push(a, b, arg);
+		}
+		i++;
+		if (count != 0)
+			i = 0;
+		count = 0;
 	}
-	sol = malloc(sizeof(char) * (count + 1));
-	ref = a;
-	count--;
-	while (ref > 0)
-	{
-		sol[count] = (ref % 2) + 48;
-		ref = ref / 2;
-		count--;
-	}
-	ref = ft_atoi(sol);
-	return (ref);
 }

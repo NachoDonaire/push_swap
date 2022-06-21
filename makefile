@@ -1,4 +1,4 @@
-SRCS	=	functions.c ft_atoi.c binario.c result.c find_max.c dec.c
+SRCS	=	functions.c ft_atoi.c binario.c result.c find_max.c dec.c desmap.c main.c handle_push.c general_bit.c first_bit_bucle.c
 OBJS	=	${SRCS:.c=.o}
 NAME	=	push_swap
 CC		=	gcc

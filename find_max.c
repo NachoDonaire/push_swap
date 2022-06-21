@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_max.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/21 11:53:10 by ndonaire          #+#    #+#             */
+/*   Updated: 2022/06/21 12:43:21 by ndonaire         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswaplib.h"
 
 int	amount_digits(int *a)
@@ -13,20 +25,12 @@ int	amount_digits(int *a)
 			y = i;
 		i++;
 	}
-	//bin = bin_converter(a[y]);
-/*	bin = a[y];
-	i = 0;
-	while (bin / 10 != 0)
-	{
-		i++;
-		bin = bin / 10;
-	}*/
 	return (digits(a[y]));
 }
 
 int	pot_ten(int base, int exp)
 {
-	int i;
+	int	i;
 	int	sol;
 
 	i = 0;
@@ -40,24 +44,3 @@ int	pot_ten(int base, int exp)
 	}
 	return (sol);
 }
-
-/*
-int main()
-{
-	int *d;
-	int y;
-
-	d = malloc(sizeof(int) * 4);
-	d[0] = 23;
-	d[1] = 2;
-	d[3] = -1;
-	y = 23;
-	y = bin_converter(y);
-	printf("--%d--", y);
-	y = amount_digits(d);
-	printf("%d", y);
-	
-	printf("%d", pot_ten(4));
-}*/
-
-	

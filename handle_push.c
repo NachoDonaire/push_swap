@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   binario.c                                          :+:      :+:    :+:   */
+/*   handle_push.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 11:37:54 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/21 11:38:46 by ndonaire         ###   ########.fr       */
+/*   Created: 2022/06/21 12:55:51 by ndonaire          #+#    #+#             */
+/*   Updated: 2022/06/21 12:56:07 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	bin_converter(int a)
+void	aux_push(int *b, int *aux)
 {
-	int		ref;
-	int		count;
-	char	*sol;
+	int	i;
 
-	count = 0;
-	ref = a;
-	while (ref > 0)
+	i = 0;
+	while (b[i] != -1)
 	{
-		ref = ref / 2;
-		count++;
+		aux[i + 1] = b[i];
+		i++;
 	}
-	sol = malloc(sizeof(char) * (count + 1));
-	ref = a;
-	count--;
-	while (ref > 0)
-	{
-		sol[count] = (ref % 2) + 48;
-		ref = ref / 2;
-		count--;
-	}
-	ref = ft_atoi(sol);
-	return (ref);
+	aux[i + 1] = -1;
 }

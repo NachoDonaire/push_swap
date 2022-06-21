@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dec.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/21 12:43:34 by ndonaire          #+#    #+#             */
+/*   Updated: 2022/06/21 12:44:10 by ndonaire         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswaplib.h"
 
 int	digits(int a)
@@ -17,7 +29,6 @@ int	digits(int a)
 	return (i);
 }
 
-
 int	dec_converter(int a)
 {
 	int	i;
@@ -36,27 +47,7 @@ int	dec_converter(int a)
 		if (m % 10 != 0 && i != 0)
 			sol = sol + pot_ten(2, i);
 		i++;
-		/*if (m == 1)
-			sol = sol + 2 * (i - 1);*/
 		m = m / 10;
 	}
 	return (sol);
 }
-/*
-int main()
-{
-	int i = 1;
-	*int aux;
-
-	aux = bin_converter(i);
-	printf("binario: %d\n", aux);
-	aux = dec_converter(aux);
-	printf("decimal: %d", aux);
-	
-	printf("%d", digits(i));
-	return (0);
-}
-
-
-
-*/
