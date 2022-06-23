@@ -59,15 +59,9 @@ int	check_ref(int *chunk, int refy, int arg)
 
 void	desmap(int *a, int *chunk, int arg)
 {
-	int	i;
 	int	y;
-	int	ref;
-	int	aux;
 
-	i = 0;
 	y = 0;
-	ref = 0;
-	aux = 0;
 	while (y < arg)
 	{
 		a[y] = check_ref(chunk, y, arg);

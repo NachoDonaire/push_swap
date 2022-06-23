@@ -66,14 +66,27 @@ int	main(int arg, char **args)
 	int	i;
 	int	y;
 	int	amount;
-
-	a = malloc(sizeof(int) * arg);
+	int	*chunk;
+	
 	b = malloc(sizeof(int) * arg);
+	chunk = malloc(sizeof(int) * arg);
 	i = 1;
 	y = 0;
 	while (args[i])
-		a[y++] = ft_atoi(args[i++]);
-	a = map(a, arg - 1);
+		b[y++] = ft_atoi(args[i++]);
+	i = 1;
+	y = 0;
+	while (args[i])
+		chunk[y++] = ft_atoi(args[i++]);
+	a = map(b, arg - 1);
+	if (no_repeat(a) == 1)
+	{
+		free(b);
+		free(chunk);
+		free(a);
+		write(1, "Error, don´t repeat numbers", 28);
+		return (0);
+	}
 	menos_fill(arg - 1, b);
 	i = 0;
 	while (a[i] != -1)
@@ -84,5 +97,21 @@ int	main(int arg, char **args)
 	amount = amount_digits(a);
 	first_bit(a, b, arg);
 	general_bit(a, b, arg, amount);
+	//printf("--%d--", is_sorted(a));
+	i = 0;
+	while(a[i] != -1)
+	{
+		a[i] = dec_converter(a[i]);
+		i++;
+	}
+	desmap(a, chunk, arg - 1);
+	i = 0;
+	while(a[i] != -1)
+	{
+		printf("%d\n", a[i++]);
+	}
+	free(a);
+	free(chunk);
+	free(b);
 	return (0);
 }

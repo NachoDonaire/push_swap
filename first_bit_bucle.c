@@ -19,6 +19,8 @@ void	first_bit_bucle(int *a, int *b, int arg)
 
 	count = 0;
 	i = 0;
+	if (is_sorted(a) == 1)
+		return ;
 	while (a[i] != -1)
 	{
 		if ((a[i] + 1) % 2 != 0)

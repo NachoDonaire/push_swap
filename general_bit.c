@@ -48,7 +48,7 @@ void	general_bit(int *a, int *b, int arg, int amount)
 
 	ref = 1;
 	help = 0;
-	while (ref < amount)
+	while (ref < amount && is_sorted(a) != 1)
 	{
 		help = find_first_to_rotate(a, ref);
 		general_bit_bucle(a, b, arg, ref);

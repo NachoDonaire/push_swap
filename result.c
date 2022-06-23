@@ -14,11 +14,6 @@
 
 void	first_bit(int *a, int *b, int arg)
 {
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
 	first_bit_bucle(a, b, arg);
 	while (b[0] != -1)
 	{

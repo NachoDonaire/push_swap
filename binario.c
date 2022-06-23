@@ -35,5 +35,6 @@ int	bin_converter(int a)
 		count--;
 	}
 	ref = ft_atoi(sol);
+	free(sol);
 	return (ref);
 }

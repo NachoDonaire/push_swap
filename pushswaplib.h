@@ -50,5 +50,7 @@ void	real_rotate(int *a, int i, int count);
 int		find_first_to_rotate(int *a, int ref);
 void	first_bit_bucle(int *a, int *b, int arg);
 int		refy_zero(int *chunk, int arg);
+int	no_repeat(int *a);
+int	is_sorted(int *a);
 
 #endif
