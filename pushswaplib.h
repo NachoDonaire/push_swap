@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:09:17 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/21 13:10:46 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:28:46 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,12 @@ void	real_rotate(int *a, int i, int count);
 int		find_first_to_rotate(int *a, int ref);
 void	first_bit_bucle(int *a, int *b, int arg);
 int		refy_zero(int *chunk, int arg);
-int	no_repeat(int *a);
-int	is_sorted(int *a);
+int		no_repeat(int *a);
+int		is_sorted(int *a);
+int		digits_bin(int a);
+int		lil_free(int y, int *dec);
+void	push_swap(int *a, int *b, int arg);
+int		error_check(int *a, int *b);
+void	menos_fill(int arg, int *b);
 
 #endif

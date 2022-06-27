@@ -1,4 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/27 17:59:03 by ndonaire          #+#    #+#             */
+/*   Updated: 2022/06/27 18:11:53 by ndonaire         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswaplib.h"
+
+int	lil_free(int y, int *dec)
+{
+	if (dec[y] == -1)
+	{
+		free(dec);
+		return (1);
+	}
+	else
+	{
+		free(dec);
+		return (0);
+	}
+}
 
 int	is_sorted(int *a)
 {
@@ -22,14 +48,5 @@ int	is_sorted(int *a)
 			y++;
 		i++;
 	}
-	if (dec[y] == -1)
-		return (1);
-	return (0);
+	return (lil_free(y, dec));
 }
-/*
-int	main()
-{
-	int a[7] = {1, 2, 4, 5, 7,  -1};
-	printf("%d", is_sorted(a));
-	return (0);
-}*/

@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:37:54 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/21 11:38:46 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:57:54 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ int	bin_converter(int a)
 	char	*sol;
 
 	count = 0;
+	count = digits_bin(a);
 	ref = a;
-	while (ref > 0)
-	{
-		ref = ref / 2;
-		count++;
-	}
 	sol = malloc(sizeof(char) * (count + 1));
+	sol[count] = '\0';
 	ref = a;
 	count--;
 	while (ref > 0)
@@ -37,4 +34,19 @@ int	bin_converter(int a)
 	ref = ft_atoi(sol);
 	free(sol);
 	return (ref);
+}
+
+int	digits_bin(int a)
+{
+	int	count;
+	int	ref;
+
+	count = 0;
+	ref = a;
+	while (ref > 0)
+	{
+		ref = ref / 2;
+		count++;
+	}
+	return (count);
 }
