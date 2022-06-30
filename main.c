@@ -30,21 +30,21 @@ int	main(int arg, char **args)
 	if (no_repeat(a) == 1 || num_check(args, arg) == 1 || is_max(args, arg) == 1)
 		return (error_check(a, b));
 	menos_fill(arg - 1, b);
-	if (arg <= 6 && is_sorted(a) != 1)
+/*	if (arg <= 6 && is_sorted(a) != 1)
 	{
 		less_five(a, b, arg - 1);
 		return (0);
-	}
+	}*/
 	i = 0;
 	while (a[i] != -1)
 	{
 		a[i] = bin_converter(a[i]);
 		i++;
 	}
-	/*i = 0;
-	while (a[i] != -1)
+	i = 0;
+/*	while (a[i] != -1)
 		printf("%d\n", a[i++]);
-		*/
+*/	
 	push_swap(a, b, arg);
 	return (0);
 }

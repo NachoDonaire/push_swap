@@ -12,27 +12,56 @@
 
 #include "pushswaplib.h"
 
+int	number_push(int *a, int ref)
+{
+	int	i;
+	int	n_push;
+	int	magic;
+
+	i = 0;
+	magic = 0;
+	n_push = 0;
+	while (a[i] != -1)
+	{
+		magic = (a[i] / pot_ten(10, digits(a[i]) - 1)) + 1;
+		if (digits(a[i]) == ref && magic % 2 != 0)
+			n_push++;
+		if (((a[i] / pot_ten(10, ref)) + 1) % 2 != 0 || digits(a[i]) < ref)
+			n_push++;
+		i++;
+	}
+	return (n_push);
+}
+
+
 void	general_bit_bucle(int *a, int *b, int arg, int ref)
 {
 	int	i;
 	int	count;
 	int	magic;
+	int	n_push;
 
 	i = 0;
+	n_push = number_push(a, ref);
+//	printf("--%d--\n", n_push);
 	count = 0;
 	magic = 0;
-	while (a[i] != -1)
+	if (is_sorted(a) == 1)
+		return ;
+	while (a[i] != -1 &&  n_push > 0)
 	{
 		magic = (a[i] / pot_ten(10, digits(a[i]) - 1)) + 1;
 		if (digits(a[i]) == ref && magic % 2 != 0)
 		{
 			real_rotate(a, i, count, arg);
 			count = real_push(a, b, arg, count);
+			n_push--;
 		}
 		if (((a[i] / pot_ten(10, ref)) + 1) % 2 != 0 || digits(a[i]) < ref)
 		{
 			real_rotate(a, i, count, arg);
 			count = real_push(a, b, arg, count);
+			n_push--;
 		}
 		i++;
 		if (count != 0)
@@ -40,78 +69,27 @@ void	general_bit_bucle(int *a, int *b, int arg, int ref)
 		count = 0;
 	}
 }
-/*
-void	general_bit_bucle(int *a, int *b, int arg, int ref)
-{
-	int	i;
-	int	magic;
 
-	i = 0;
-	magic = 0;
-	while (i < lens(a))
-	{
-		*if (digits(a[0]) == ref)
-		{
-			magic = a[0] / pot_ten(10, digits(a[0]) - 1) + 1;
-			if (magic % 2 != 0)
-			{
-				write(1, "pb\n", 3);
-				push(a, b, arg);
-			}
-			else
-			{
-				write(1, "ra\n", 3);
-				rotate(a);
-			}
-		}
-		if (((a[0] / pot_ten(10, ref)) + 1) % 2 != 0)
-		{
-			write(1, "pb\n", 3);
-			push(a, b, arg);
-		}
-		else
-		{
-			write(1, "ra\n", 3);
-			rotate(a);
-		}
-		i++;
-	}
-		magic = (a[0] / pot_ten(10, digits(a[0]) - 1)) + 1;
-		if (digits(a[0]) == ref && magic % 2 != 0)
-		{
-			write(1, "pb\n", 3);
-			push(a, b, arg);
-		}
-		else if (digits(a[0]) == ref && magic % 2 == 0)
-		{
-			write(1, "ra\n", 3);
-			rotate(a);
-		}
-		if (((a[0] / pot_ten(10, ref)) + 1) % 2 != 0 && digits(a[0]) < ref)
-		{
-			write(1, "pb\n", 3);
-			push(a, b, arg);
-		}
-		else if (((a[0] / pot_ten(10, ref)) + 1) % 2 == 0 && digits(a[0]) < ref)
-		{
-			write(1, "ra\n", 3);
-			rotate(a);
-		}
-		i++;
-}
-*/
 void	general_bit(int *a, int *b, int arg, int amount)
 {
 	int	ref;
-	int	help;
+	int help;
 
-	ref = 1;
 	help = 0;
+	ref = 1;
 	while (ref < amount && is_sorted(a) != 1)
 	{
 		help = find_first_to_rotate(a, ref);
 		general_bit_bucle(a, b, arg, ref);
 		connect(a, b, arg, help, ref);
+		if (ref + 1 == amount)
+		{
+			while (b[0] != -1)
+			{
+				write(1, "pa\n", 3);
+				push(b, a, arg);
+			}
+		}
 		ref++;
 	}
 }

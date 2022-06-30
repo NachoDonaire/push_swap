@@ -36,16 +36,33 @@ int	find_first_to_rotate(int *a, int ref)
 	return (0);
 }
 
+int	find_first_to_push(int *a, int ref)
+{
+	int	i;
+
+	i = 0;
+	while (a[i] != -1)
+	{
+		if (((a[i] / pot_ten(10, ref)) + 1) % 2 != 0)
+			return (a[i]);
+		i++;
+	}
+	return (0);
+}
+
+
 void	check_b(int *a, int *b, int arg, int ref)
 {
 	int	i;
-	int	count;
+	int	lensb;
+	int	help;
 
 	i = 0;
-	count = 0;
-	while (i < lens(b))
+	lensb = lens(b);
+	help = find_first_to_push(b, ref + 1);
+	while (i < lensb)
 	{
-		if ((b[0] / pot_ten(10, ref + 1) + 1) % 2 != 0)
+		if ((b[0] / pot_ten(10, ref + 1) + 1) % 2 != 0 || digits(b[0]) < ref + 1)
 		{
 			write(1, "rb\n", 3);
 			rotate(b);
@@ -57,16 +74,19 @@ void	check_b(int *a, int *b, int arg, int ref)
 		}
 		i++;
 	}
+	while (b[0] != help)
+	{
+		write(1, "rb\n", 3);
+		rotate(b);
+	}
 }
 
 void	connect(int *a, int *b, int arg, int help, int ref)
 {
 	int	i;
-	int	magic;
 
 	i = 0;
-	magic = 0;
-	if (ref == 0)
+	if (ref == 0 && help == -45)
 		return ;
 	while (a[i] != help)
 		i++;
@@ -91,11 +111,7 @@ void	connect(int *a, int *b, int arg, int help, int ref)
 	//	check_b(a, b, arg, ref);
 	//else
 	//{	
-		while (b[i] != -1)
-		{
-			write(1, "pa\n", 3);
-			push(b, a, arg);
-		}
+	check_b(a, b, arg, ref);
 	//}
 }
 

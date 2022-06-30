@@ -69,5 +69,6 @@ int		lensy(char *s);
 void	sort_a(int *a, int arg);
 int		is_sorted_dec(int *a);
 void	check_b(int *a, int *b, int arg, int ref);
+int	number_push(int *a, int ref);
 
 #endif
