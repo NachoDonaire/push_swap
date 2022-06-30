@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:28:00 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/27 18:29:56 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/06/30 17:23:47 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,25 @@ int	no_repeat(int *a)
 	}
 	return (0);
 }
+
+int	num_check(char	**args, int arg)
+{
+	int	i;
+	int	y;
+
+	y = 0;
+	i = 1;
+	while (i < arg)
+	{
+		while (args[i][y])
+		{
+			if ((args[i][y] < '0' || args[i][y]  > '9') && args[i][y] != '-')
+				return (1);
+			y++;
+		}
+		y = 0;
+		i++;
+	}
+	return (0);
+}
+

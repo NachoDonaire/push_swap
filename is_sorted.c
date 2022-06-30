@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:59:03 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/27 18:11:53 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:38:33 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,21 @@ int	is_sorted(int *a)
 		i++;
 	}
 	return (lil_free(y, dec));
+}
+int	is_sorted_dec(int *a)
+{
+	int	i;
+	int	y;
+
+	i = 0;
+	y = 1;
+	while (a[i] != -1)
+	{
+		if (a[y] > a[i] && a[y] != -1)
+			y++;
+		i++;
+	}
+	if (a[y] == -1)
+		return (1);
+	return (0);
 }

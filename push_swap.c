@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 12:50:49 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/27 18:27:31 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/06/30 17:44:52 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	error_check(int *a, int *b)
 {
 	free(b);
 	free(a);
-	write(1, "Error, don´t repeat numbers", 28);
+	write(1, "Error", 5);
 	return (0);
 }
 

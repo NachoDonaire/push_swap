@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:09:17 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/27 18:28:46 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/06/30 15:30:30 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int		*map(int *a, int arg);
 int		check_ref(int *chunk, int refy, int arg);
 void	desmap(int *a, int *chunk, int arg);
 void	aux_push(int *b, int *aux);
-void	connect(int *a, int *b, int arg, int help);
+void	connect(int *a, int *b, int arg, int help, int ref);
 int		real_push(int *a, int *b, int arg, int count);
 void	general_bit_bucle(int *a, int *b, int arg, int ref);
-void	real_rotate(int *a, int i, int count);
+void	real_rotate(int *a, int i, int count, int arg);
 int		find_first_to_rotate(int *a, int ref);
 void	first_bit_bucle(int *a, int *b, int arg);
 int		refy_zero(int *chunk, int arg);
@@ -57,5 +57,17 @@ int		lil_free(int y, int *dec);
 void	push_swap(int *a, int *b, int arg);
 int		error_check(int *a, int *b);
 void	menos_fill(int arg, int *b);
+int		find_mid_value(int *a);
+void	push_high_mid(int *a, int *b, int arg, int mid);
+void	b_empty(int *b, int *a, int arg);
+void	less_five(int *a, int *b, int arg);
+void	plus_than_half(int *a, int arg, int i);
+int		num_check(char	**args, int arg);
+int		finder(char *s, char *coin);
+int		is_max(char **args, int arg);
+int		lensy(char *s);
+void	sort_a(int *a, int arg);
+int		is_sorted_dec(int *a);
+void	check_b(int *a, int *b, int arg, int ref);
 
 #endif
