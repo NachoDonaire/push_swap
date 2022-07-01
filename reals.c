@@ -1,54 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_a.c                                           :+:      :+:    :+:   */
+/*   reals.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 10:15:36 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/01 10:26:53 by ndonaire         ###   ########.fr       */
+/*   Created: 2022/07/01 10:21:42 by ndonaire          #+#    #+#             */
+/*   Updated: 2022/07/01 10:27:58 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	find_max(int *a)
+int	real_push(int *a, int *b, int arg, int count)
 {
-	int	i;
-	int	y;
-
-	i = 0;
-	y = 0;
-	while (i < lens(a))
-	{
-		if (a[i] > a[y])
-			y = i;
-		i++;
-	}
-	return (y);
+	write(1, "pb\n", 3);
+	push(a, b, arg);
+	count++;
+	return (count);
 }
 
-void	sort_a(int *a, int arg)
+void	real_rotate(int *a, int i, int count, int arg)
 {
-	int	i;
-	int	y;
-
-	if (is_sorted(a) == 1)
-		return ;
-	y = find_max(a);
-	i = 0;
-	if (y != lens(a) - 1)
+	if (i <= lens(a) / 2)
 	{
-		while (y < lens(a) - 1)
+		while (count < i)
+		{
+			write(1, "ra\n", 3);
+			rotate(a);
+			count++;
+		}
+	}
+	else
+	{
+		while (i < lens(a))
 		{
 			write(1, "rra\n", 4);
 			reverse_rotate(a, arg);
-			y++;
+			i++;
+			count++;
 		}
-	}
-	if (lens(a) == 3 && is_sorted_dec(a) == 0)
-	{
-		write(1, "sa\n", 3);
-		swap(a);
 	}
 }

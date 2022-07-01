@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:28:00 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/30 17:23:47 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/01 09:58:18 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	num_check(char	**args, int arg)
 	{
 		while (args[i][y])
 		{
-			if ((args[i][y] < '0' || args[i][y]  > '9') && args[i][y] != '-')
+			if ((args[i][y] < '0' || args[i][y] > '9') && args[i][y] != '-')
 				return (1);
 			y++;
 		}
@@ -53,4 +53,3 @@ int	num_check(char	**args, int arg)
 	}
 	return (0);
 }
-

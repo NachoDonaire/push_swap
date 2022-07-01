@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   few_nums.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/01 09:05:29 by ndonaire          #+#    #+#             */
+/*   Updated: 2022/07/01 10:26:00 by ndonaire         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswaplib.h"
 
 int	find_mid_value(int *a)
@@ -31,19 +43,10 @@ void	push_high_mid(int *a, int *b, int arg, int mid)
 			return ;
 		if (a[i] < mid)
 		{
-			if (i > (arg / 2))
-				plus_than_half(a, arg, i);
-			while (count < i && i < (arg / 2))
-			{
-				write(1, "ra\n", 3);
-				rotate(a);
-				count++;
-			}
+			real_rotate(a, i, count, arg);
 			if (is_sorted(a) == 1 && lens(a) == arg)
 				return ;
-			write(1, "pb\n", 3);
-			push(a, b, arg);
-			count++;
+			count = real_push(a, b, arg, count);
 		}
 		i++;
 		if (count != 0)
@@ -57,13 +60,12 @@ void	plus_than_half(int *a, int arg, int i)
 	int	aux;
 
 	aux = a[i];
-		while (a[0] != aux)
-		{
-			write(1, "rra\n", 4);
-			reverse_rotate(a, arg);
-		}
+	while (a[0] != aux)
+	{
+		write(1, "rra\n", 4);
+		reverse_rotate(a, arg);
+	}
 }
-
 
 void	b_empty(int *b, int *a, int arg)
 {
@@ -75,16 +77,7 @@ void	b_empty(int *b, int *a, int arg)
 	while (b[i] != -1)
 	{
 		if (b[i] >= 1)
-		{
-			while (count < i)
-			{
-				write(1, "rb\n", 3);
-				rotate(b);
-				count++;
-			}
-			write(1, "pa\n", 3);
-			push(b, a, arg);
-		}
+			count = a_while_for_b(b, i, arg, a);
 		i++;
 		if (count != 0)
 			i = 0;

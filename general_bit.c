@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 12:56:12 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/30 18:04:09 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/01 10:13:54 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,27 @@ int	number_push(int *a, int ref)
 	return (n_push);
 }
 
-
 void	general_bit_bucle(int *a, int *b, int arg, int ref)
 {
 	int	i;
 	int	count;
 	int	magic;
-	int	n_push;
 
 	i = 0;
-	n_push = number_push(a, ref);
-//	printf("--%d--\n", n_push);
 	count = 0;
 	magic = 0;
-	if (is_sorted(a) == 1)
-		return ;
-	while (a[i] != -1 &&  n_push > 0)
+	while (a[i] != -1)
 	{
 		magic = (a[i] / pot_ten(10, digits(a[i]) - 1)) + 1;
 		if (digits(a[i]) == ref && magic % 2 != 0)
 		{
 			real_rotate(a, i, count, arg);
 			count = real_push(a, b, arg, count);
-			n_push--;
 		}
 		if (((a[i] / pot_ten(10, ref)) + 1) % 2 != 0 || digits(a[i]) < ref)
 		{
 			real_rotate(a, i, count, arg);
 			count = real_push(a, b, arg, count);
-			n_push--;
 		}
 		i++;
 		if (count != 0)
@@ -73,7 +65,7 @@ void	general_bit_bucle(int *a, int *b, int arg, int ref)
 void	general_bit(int *a, int *b, int arg, int amount)
 {
 	int	ref;
-	int help;
+	int	help;
 
 	help = 0;
 	ref = 1;
@@ -81,7 +73,8 @@ void	general_bit(int *a, int *b, int arg, int amount)
 	{
 		help = find_first_to_rotate(a, ref);
 		general_bit_bucle(a, b, arg, ref);
-		connect(a, b, arg, help, ref);
+		connect(a, arg, help);
+		check_b(a, b, arg, ref);
 		if (ref + 1 == amount)
 		{
 			while (b[0] != -1)

@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:09:17 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/30 15:30:30 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/01 10:22:01 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		*map(int *a, int arg);
 int		check_ref(int *chunk, int refy, int arg);
 void	desmap(int *a, int *chunk, int arg);
 void	aux_push(int *b, int *aux);
-void	connect(int *a, int *b, int arg, int help, int ref);
+void	connect(int *a, int arg, int help);
 int		real_push(int *a, int *b, int arg, int count);
 void	general_bit_bucle(int *a, int *b, int arg, int ref);
 void	real_rotate(int *a, int i, int count, int arg);
@@ -69,6 +69,11 @@ int		lensy(char *s);
 void	sort_a(int *a, int arg);
 int		is_sorted_dec(int *a);
 void	check_b(int *a, int *b, int arg, int ref);
-int	number_push(int *a, int ref);
+int		number_push(int *a, int ref);
+int		a_while_for_b(int *b, int i, int arg, int *a);
+int		less_five_main(int *a, int *b, int arg);
+void	bin_conversion(int *a);
+void	b_bucle(int help, int *b);
+int		find_max(int *a);
 
 #endif

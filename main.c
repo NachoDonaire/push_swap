@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:25:55 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/30 17:22:44 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/01 09:56:55 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,14 @@ int	main(int arg, char **args)
 	while (args[i])
 		b[y++] = ft_atoi(args[i++]);
 	a = map(b, arg - 1);
-	if (no_repeat(a) == 1 || num_check(args, arg) == 1 || is_max(args, arg) == 1)
+	if (no_repeat(a) == 1 || num_check(args, arg) == 1)
+		return (error_check(a, b));
+	if (is_max(args, arg) == 1)
 		return (error_check(a, b));
 	menos_fill(arg - 1, b);
-/*	if (arg <= 6 && is_sorted(a) != 1)
-	{
-		less_five(a, b, arg - 1);
-		return (0);
-	}*/
-	i = 0;
-	while (a[i] != -1)
-	{
-		a[i] = bin_converter(a[i]);
-		i++;
-	}
-	i = 0;
-/*	while (a[i] != -1)
-		printf("%d\n", a[i++]);
-*/	
+	if (arg <= 6 && is_sorted(a) != 1)
+		return (less_five_main(a, b, arg));
+	bin_conversion(a);
 	push_swap(a, b, arg);
 	return (0);
 }
