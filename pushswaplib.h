@@ -75,5 +75,9 @@ int		less_five_main(int *a, int *b, int arg);
 void	bin_conversion(int *a);
 void	b_bucle(int help, int *b);
 int		find_max(int *a);
+void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+char	**ft_split(char const *s, char c);
+
 
 #endif

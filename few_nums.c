@@ -99,4 +99,6 @@ void	less_five(int *a, int *b, int arg)
 	push_high_mid(a, b, arg, mid);
 	sort_a(a, arg);
 	b_empty(b, a, arg);
+	free(a);
+	free(b);
 }

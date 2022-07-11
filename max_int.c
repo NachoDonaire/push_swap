@@ -50,7 +50,9 @@ int	is_max(char **args, int arg)
 
 	y = 0;
 	i = 1;
-	while (i < arg)
+	if (arg == 0)
+		return (0);
+	while (args[i])
 	{
 		if (lensy(args[i]) > 10)
 			return (1);

@@ -30,13 +30,11 @@ int	find_max(int *a)
 
 void	sort_a(int *a, int arg)
 {
-	int	i;
 	int	y;
 
 	if (is_sorted(a) == 1)
 		return ;
 	y = find_max(a);
-	i = 0;
 	if (y != lens(a) - 1)
 	{
 		while (y < lens(a) - 1)

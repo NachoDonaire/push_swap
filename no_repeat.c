@@ -38,13 +38,15 @@ int	num_check(char	**args, int arg)
 	int	i;
 	int	y;
 
+	if (arg == 0)
+		return (0);
 	y = 0;
 	i = 1;
-	while (i < arg)
+	while (args[i])
 	{
 		while (args[i][y])
 		{
-			if ((args[i][y] < '0' || args[i][y] > '9') && args[i][y] != '-')
+			if ((args[i][y] < '0' || args[i][y] > '9') && args[i][y] != '-' && args[i][y] != ' ')
 				return (1);
 			y++;
 		}
