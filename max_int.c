@@ -54,12 +54,10 @@ int	is_max(char **args, int arg)
 		return (0);
 	while (args[i])
 	{
-		if (lensy(args[i]) > 10)
-			return (1);
-		if (lensy(args[i]) == 10)
+		if (lensy(args[i]) >= 10)
 		{
 			y = ft_atoi(args[i]);
-			if (y <= 0)
+			if (y == 0 || y == -1)
 				return (1);
 		}
 		i++;
