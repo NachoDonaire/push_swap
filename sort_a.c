@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 10:15:36 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/01 10:26:53 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/19 19:37:29 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	sort_a(int *a, int arg)
 {
 	int	y;
 
-	if (is_sorted(a) == 1)
+	if (is_sorted_dec(a) == 1)
 		return ;
 	y = find_max(a);
 	if (y != lens(a) - 1)
@@ -49,4 +49,12 @@ void	sort_a(int *a, int arg)
 		write(1, "sa\n", 3);
 		swap(a);
 	}
+}
+
+int	sortieo(int *a, int *b, int arg)
+{
+	sort_a(a, arg);
+	free(a);
+	free(b);
+	return (0);
 }

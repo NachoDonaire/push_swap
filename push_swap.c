@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 12:50:49 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/30 17:44:52 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/19 19:21:25 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	push_swap(int *a, int *b, int arg)
 {
 	int	amount;
 
+	if (is_sorted(a) == 1)
+		return ;
 	amount = amount_digits(a);
 	first_bit(a, b, arg);
 	general_bit(a, b, arg, amount);

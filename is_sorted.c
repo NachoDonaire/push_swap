@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:59:03 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/01 09:48:16 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/19 19:31:00 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,16 @@ int	is_sorted_dec(int *a)
 	if (a[y] == -1)
 		return (1);
 	return (0);
+}
+
+void	dec_conversion(int *a)
+{
+	int	i;
+
+	i = 0;
+	while (a[i] != -1)
+	{
+		a[i] = dec_converter(a[i]);
+		i++;
+	}
 }

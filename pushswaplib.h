@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:09:17 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/01 10:22:01 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/19 19:24:04 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		num_check(char	**args, int arg);
 int		finder(char *s, char *coin);
 int		is_max(char **args, int arg);
 int		lensy(char *s);
-void	sort_a(int *a, int arg);
+void	sort_a(int *a,  int arg);
 int		is_sorted_dec(int *a);
 void	check_b(int *a, int *b, int arg, int ref);
 int		number_push(int *a, int ref);
@@ -78,6 +78,7 @@ int		find_max(int *a);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	**ft_split(char const *s, char c);
-
+void	dec_conversion(int *a);
+int		sortieo(int *a, int *b, int arg);
 
 #endif

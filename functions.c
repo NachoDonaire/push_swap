@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:55:36 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/29 15:57:14 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/19 19:38:26 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	reverse_rotate(int *a, int arg)
 	}
 	a[0] = aux[i - 1];
 	a[i] = -1;
+	free(aux);
 }
 
 void	rotate_both(int *a, int *b)

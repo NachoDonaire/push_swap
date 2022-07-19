@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:57:00 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/01 09:57:30 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:59:07 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	is_max(char **args, int arg)
 		if (lensy(args[i]) >= 10)
 		{
 			y = ft_atoi(args[i]);
-			if (y == 0 || y == -1)
+			if (y == -1 || y == 0)
 				return (1);
 		}
 		i++;
