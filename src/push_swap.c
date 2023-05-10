@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 12:50:49 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/19 19:21:25 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/08/02 13:01:02 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	error_check(int *a, int *b)
 {
 	free(b);
 	free(a);
-	write(1, "Error", 5);
+	write(1, "Error\n", 5);
 	return (0);
 }
 

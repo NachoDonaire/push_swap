@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:25:55 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/19 19:38:28 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/08/02 13:03:32 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,12 @@ int	check_is_sorted(int *a, int *b)
 		return (0);
 	}
 }
-
-void	leaks(void)
+/*
+void	leaks()
 {
 	system("leaks push_swap");
 }
+*/
 
 int	main(int arg, char **args)
 {
@@ -101,7 +102,6 @@ int	main(int arg, char **args)
 	int	*b;
 	int	nnumy;
 
-	atexit(leaks);
 	if (arg == 1)
 		return (0);
 	b = gest_err(args);
@@ -114,7 +114,7 @@ int	main(int arg, char **args)
 	if (check_is_sorted(a, b) == 1)
 		return (0);
 	if (nnumy <= 4)
-		return (sortieo(a,b,  nnumy));
+		return (sortieo(a, b, nnumy));
 	menos_fill(nnumy - 1, b);
 	if (nnumy <= 6 && is_sorted(a) != 1)
 		return (less_five_main(a, b, nnumy));

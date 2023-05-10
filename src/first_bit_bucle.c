@@ -1,52 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   binario.c                                          :+:      :+:    :+:   */
+/*   first_bit_bucle.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 11:37:54 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/19 19:09:07 by ndonaire         ###   ########.fr       */
+/*   Created: 2022/06/21 13:08:18 by ndonaire          #+#    #+#             */
+/*   Updated: 2022/07/26 20:16:24 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	bin_converter(int a)
+void	first_bit_bucle(int *a, int *b, int arg)
 {
-	int		ref;
-	int		count;
-	char	*sol;
-
-	count = 0;
-	count = digits_bin(a);
-	ref = a;
-	sol = malloc(sizeof(char) * (count + 1));
-	sol[count] = '\0';
-	ref = a;
-	count--;
-	while (ref > 0)
-	{
-		sol[count] = (ref % 2) + 48;
-		ref = ref / 2;
-		count--;
-	}
-	ref = ft_atoi(sol);
-	free(sol);
-	return (ref);
-}
-
-int	digits_bin(int a)
-{
+	int	i;
 	int	count;
-	int	ref;
+	int	n_push;
 
 	count = 0;
-	ref = a;
-	while (ref > 0)
+	i = 0;
+	n_push = number_push(a, 0);
+	if (is_sorted(a) == 1)
+		return ;
+	while (a[i] != -1 && n_push > 0)
 	{
-		ref = ref / 2;
-		count++;
+		if ((a[i] + 1) % 2 != 0)
+		{
+			real_rotate(a, i, count, arg);
+			write(1, "pb\n", 3);
+			push(a, b, arg);
+			count++;
+		}
+		i++;
+		if (count != 0)
+			i = 0;
+		count = 0;
 	}
-	return (count);
 }

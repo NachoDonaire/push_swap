@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 17:59:03 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/19 19:31:00 by ndonaire         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:08:18 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ int	lil_free(int y, int *dec)
 		free(dec);
 		return (1);
 	}
-	else
-	{
-		free(dec);
-		return (0);
-	}
+	//free(dec);
+	return (0);
 }
 
 int	is_sorted(int *a)

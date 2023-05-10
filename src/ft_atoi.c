@@ -6,13 +6,13 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:45:30 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/06/29 13:49:18 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/08/02 13:07:47 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int				i;
 	int				sign;
@@ -31,11 +31,11 @@ int	ft_atoi(const char *str)
 			sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9' && num < 2147483649)
 		num = (str[i++] - '0') + (num * 10);
 	if (num > 2147483647 && sign > 0)
-		return (-1);
+		return (2147483648);
 	if (num > 2147483648 && sign < 0)
-		return (0);
+		return (-2147483649);
 	return ((int)(sign * num));
 }

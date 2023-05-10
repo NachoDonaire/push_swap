@@ -6,7 +6,7 @@
 /*   By: ndonaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:09:17 by ndonaire          #+#    #+#             */
-/*   Updated: 2022/07/19 19:24:04 by ndonaire         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:31:44 by ndonaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 int		find_mid_value(int *a);
 void	check_higher(int *a);
 void	rotate(int *a);
@@ -66,7 +66,7 @@ int		num_check(char	**args, int arg);
 int		finder(char *s, char *coin);
 int		is_max(char **args, int arg);
 int		lensy(char *s);
-void	sort_a(int *a,  int arg);
+void	sort_a(int *a, int arg);
 int		is_sorted_dec(int *a);
 void	check_b(int *a, int *b, int arg, int ref);
 int		number_push(int *a, int ref);
